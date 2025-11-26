@@ -1,0 +1,153 @@
+======================================================================
+🚀 Doc2Vec for Track A - Optimized Implementation
+======================================================================
+
+🔹 Loading data with proper train/test split...
+   ✅ Sample data: 39 examples
+   ✅ Synthetic data: 1900 examples
+   ℹ️  Using 1000 synthetic examples
+   ✅ Test data (dev): 200 examples
+
+📊 Data Split:
+   Training:  1039 examples
+   Test:      200 examples
+
+🔹 Preparing documents for Doc2Vec training...
+   Processing training documents...
+   Processing test documents...
+✅ Prepared 3717 documents for Doc2Vec
+
+======================================================================
+🧠 Training Doc2Vec Model (this may take a few minutes)...
+======================================================================
+
+✅ Doc2Vec model trained!
+   Vector size: 300
+   Vocabulary size: 20196
+
+🔹 Extracting document vectors...
+✅ Document vectors extracted
+
+🔹 Creating rich features from Doc2Vec vectors...
+✅ Features created:
+   Training: (1039, 44) (44 features)
+   Test:     (200, 44)
+
+======================================================================
+🧠 Training and Evaluating Multiple Classifiers
+======================================================================
+
+======================================================================
+📊 Logistic Regression
+======================================================================
+
+   5-Fold Cross-Validation on Training Set:
+      Fold 1: 96.63%
+      Fold 2: 97.12%
+      Fold 3: 97.60%
+      Fold 4: 96.63%
+      Fold 5: 94.69%
+
+   🎯 CV Mean: 96.53% (±0.99%)
+
+   Training on full training set...
+
+   🎯 Test Set Accuracy: 50.00%
+
+======================================================================
+📊 Random Forest
+======================================================================
+
+   5-Fold Cross-Validation on Training Set:
+      Fold 1: 96.63%
+      Fold 2: 97.12%
+      Fold 3: 96.15%
+      Fold 4: 97.60%
+      Fold 5: 95.65%
+
+   🎯 CV Mean: 96.63% (±0.69%)
+
+   Training on full training set...
+
+   🎯 Test Set Accuracy: 48.00%
+
+======================================================================
+📊 Gradient Boosting
+======================================================================
+
+   5-Fold Cross-Validation on Training Set:
+      Fold 1: 96.63%
+      Fold 2: 97.12%
+      Fold 3: 96.63%
+      Fold 4: 97.12%
+      Fold 5: 94.69%
+
+   🎯 CV Mean: 96.44% (±0.90%)
+
+   Training on full training set...
+
+   🎯 Test Set Accuracy: 55.00%
+
+======================================================================
+📊 MLP Neural Network
+======================================================================
+
+   5-Fold Cross-Validation on Training Set:
+      Fold 1: 98.08%
+      Fold 2: 96.15%
+      Fold 3: 97.12%
+      Fold 4: 97.12%
+      Fold 5: 94.20%
+
+   🎯 CV Mean: 96.53% (±1.31%)
+
+   Training on full training set...
+
+   🎯 Test Set Accuracy: 50.00%
+
+======================================================================
+📊 XGBoost
+======================================================================
+
+   5-Fold Cross-Validation on Training Set:
+      Fold 1: 97.12%
+      Fold 2: 98.56%
+      Fold 3: 97.60%
+      Fold 4: 98.08%
+      Fold 5: 95.65%
+
+   🎯 CV Mean: 97.40% (±1.00%)
+
+   Training on full training set...
+
+   🎯 Test Set Accuracy: 48.50%
+
+======================================================================
+📈 FINAL RESULTS SUMMARY
+======================================================================
+
+Classifier                CV Score        Test Score
+----------------------------------------------------------------------
+Gradient Boosting         96.44% ±0.90%   55.00%
+Logistic Regression       96.53% ±0.99%   50.00%
+MLP Neural Network        96.53% ±1.31%   50.00%
+XGBoost                   97.40% ±1.00%   48.50%
+Random Forest             96.63% ±0.69%   48.00%
+
+   Test Accuracy: 55.00%
+
+🔹 Saving models...
+✅ Doc2Vec model saved: doc2vec_model.bin
+✅ Best classifier saved: doc2vec_best_classifier.pkl
+✅ Scaler saved: doc2vec_scaler.pkl
+
+======================================================================
+✅ Doc2Vec Training Complete!
+======================================================================
+
+💡 Tips to Improve Doc2Vec Performance:
+   1. Increase epochs (currently 40, try 60-100)
+   2. Tune vector_size (currently 300, try 400-500)
+   3. Use more synthetic training data
+   4. Try different Doc2Vec algorithms (dm=0 for DBOW)
+   5. Ensemble Doc2Vec with SBERT for best results!

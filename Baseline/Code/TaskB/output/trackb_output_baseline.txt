@@ -1,0 +1,23 @@
+
+Using : intfloat/e5-large-v2
+
+
+[Stage 1/5] Loading data...
+[info] ✅ Loaded 200 Track A triplets and 479 Track B stories
+
+[Stage 2/5] Loading pretrained model...        
+[info] Using model: intfloat/e5-large-v2 on cpu
+
+[Stage 3/5] Encoding Track-B corpus...
+[info] Encoding 479 texts ...
+Batches: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 15/15 [16:06<00:00, 64.45s/it]
+[info] ✅ Encoded Track-B corpus → shape (479, 1024)
+
+[Stage 4/5] Evaluating similarity-based baseline...
+Evaluating triplets: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [00:00<00:00, 2339.06it/s]
+
+[info] ✅ Evaluation complete. Skipped 0 missing triplets.
+🎯 Final Accuracy: 67.00% on 200 valid triplets
+[info] ✅ Saved embeddings to output/e5_trackb_embeddings.npy
+
+✨ Done — No classifier used, pure cosine similarity baseline!

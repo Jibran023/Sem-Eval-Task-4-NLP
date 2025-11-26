@@ -1,0 +1,114 @@
+======================================================================
+🚀 CORRECT Train/Test Split - NO Data Leakage
+======================================================================
+
+🔹 Loading data with proper train/test split...
+   ✅ Sample data: 39 examples
+   ✅ Synthetic data: 1900 examples
+   ℹ️  Using 500 synthetic examples
+   ✅ Test data (dev): 200 examples
+
+📊 Data Split Summary:
+   Training set:  539 examples
+   Test set:      200 examples
+   Ratio:         0.37x test/train
+
+🔹 Loading Sentence Transformer: 'all-mpnet-base-v2'...
+✅ Model loaded successfully
+
+🔹 Encoding TRAINING data...
+Batches: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 17/17 [06:04<00:00, 21.46s/it]
+Batches: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 17/17 [06:11<00:00, 21.88s/it]
+Batches: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 17/17 [06:01<00:00, 21.29s/it]
+✅ Training data encoded
+
+🔹 Encoding TEST data...
+Batches: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 7/7 [02:17<00:00, 19.62s/it]
+Batches: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 7/7 [02:30<00:00, 21.48s/it] 
+Batches: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 7/7 [02:05<00:00, 17.94s/it]
+✅ Test data encoded
+
+🔹 Creating feature vectors...
+✅ Features created:
+   Training: (539, 49)
+   Test:     (200, 49)
+
+======================================================================
+🧠 Phase 1: Cross-Validation on TRAINING Set (Hyperparameter Tuning)
+======================================================================
+
+🔍 Testing different MLP configurations with 5-fold CV...
+
+   Testing: Small - (64, 32)
+      CV Score: 96.29% (±1.17%)
+
+   Testing: Medium - (128, 64, 32)
+      CV Score: 96.66% (±1.61%)
+
+   Testing: Large - (150, 75)
+      CV Score: 95.92% (±1.91%)
+
+   Testing: Deep - (256, 128, 64)
+      CV Score: 95.92% (±1.81%)
+
+🏆 Best Configuration: Medium
+   Layers: (128, 64, 32)
+   Alpha: 0.001
+   CV Score: 96.66%
+
+======================================================================
+🧠 Phase 2: Training Final Model on ALL Training Data
+======================================================================
+
+🔹 Training final model...
+✅ Model trained
+
+======================================================================
+🎯 Phase 3: Evaluation on HELD-OUT Test Set (dev_tracka)
+======================================================================
+
+🎯 Test Set Accuracy: 63.00%
+   (This is the REAL, unbiased performance)
+
+📊 Classification Report:
+                  precision    recall  f1-score   support
+
+Text B is closer     0.6000    0.7576    0.6696        99
+Text A is closer     0.6800    0.5050    0.5795       101
+
+        accuracy                         0.6300       200
+       macro avg     0.6400    0.6313    0.6246       200
+    weighted avg     0.6404    0.6300    0.6241       200
+
+
+📊 Confusion Matrix:
+                    Predicted B    Predicted A
+  Actual B (0):         75            24
+  Actual A (1):         50            51
+
+======================================================================
+📈 COMPARISON: CV vs Real Test Performance
+======================================================================
+
+   Cross-Validation (on training):  96.66%
+   Test Set (held-out dev_tracka):  63.00%
+   Difference:                       -33.66%
+
+   ⚠️  Model may be overfitting to training data
+   💡 Consider: more data, regularization, or simpler model
+
+🔹 Saving final model...
+✅ Model saved:
+   - mlp_model_no_leakage.pkl
+   - scaler_no_leakage.pkl
+
+======================================================================
+✅ Training and Evaluation Complete - NO DATA LEAKAGE!
+======================================================================
+
+💡 Next Steps to Improve Performance:
+   1. Fine-tune SBERT on narrative similarity (biggest impact)
+   2. Use more synthetic training data (you have 1900 examples!)
+   3. Add data augmentation (back-translation, paraphrasing)
+   4. Try ensemble methods
+   5. Add narrative-specific features (entities, plot elements)

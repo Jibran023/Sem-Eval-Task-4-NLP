@@ -1,0 +1,79 @@
+============================================================
+🧪 Testing Model on Dev Track A
+============================================================
+
+📂 Step 1: Loading saved model...
+✅ Model and scaler loaded!
+
+📂 Step 2: Loading dev_tracka.jsonl...        
+✅ Loaded 200 test examples
+
+🤖 Step 3: Loading SBERT and encoding texts...
+   Encoding anchors...
+Batches: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 7/7 [02:03<00:00, 17.63s/it]
+   Encoding text_a...
+Batches: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 7/7 [02:07<00:00, 18.25s/it]
+   Encoding text_b...
+Batches: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 7/7 [01:55<00:00, 16.51s/it]
+✅ All texts encoded!
+
+🔧 Step 4: Creating features...
+✅ Features created: (200, 49)
+
+⚖️  Step 5: Scaling features...
+✅ Features scaled!
+
+🎯 Step 6: Making predictions...
+✅ Predictions complete!
+
+============================================================
+📊 RESULTS
+============================================================
+
+🎯 Accuracy: 63.00%
+
+   ✅ Correct:   126/200 (63.0%)
+   ❌ Incorrect: 74/200 (37.0%)
+
+📋 Detailed Classification Report:
+                  precision    recall  f1-score   support
+
+Text B is closer       0.60      0.76      0.67        99
+Text A is closer       0.68      0.50      0.58       101
+
+
+============================================================
+🔍 EXAMPLE PREDICTIONS
+============================================================
+
+✅ 3 Correct Predictions:
+
+   Example 0:
+   Predicted: Text B (confidence: 92.0%)
+   Actual: Text B ✓
+
+   Example 2:
+   Predicted: Text B (confidence: 92.9%)
+   Actual: Text B ✓
+
+   Example 3:
+   Predicted: Text B (confidence: 92.8%)
+   Actual: Text B ✓
+
+❌ 3 Incorrect Predictions:
+
+   Example 1:
+   Predicted: Text B (confidence: 66.5%)
+   Actual: Text A ✗
+
+   Example 5:
+   Predicted: Text A (confidence: 79.9%)
+   Actual: Text B ✗
+
+   Example 9:
+   Predicted: Text B (confidence: 80.6%)
+   Actual: Text A ✗
+
+============================================================
+✅ Testing Complete!
+============================================================
